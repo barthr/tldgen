@@ -6,7 +6,7 @@ const resultList = document.getElementById("domain-result");
 const resultCount = document.getElementById("domain-count");
 
 const cleanDomainInput = (input) => {
-    return input.match(/[a-zA-Z0-9]+/g).join("").toLowerCase();
+    return input.match(/[a-zA-Z0-9-]+/g).join("").toLowerCase();
 }
 
 const validDomain = (input, tld) => {
