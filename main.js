@@ -1,39 +1,54 @@
-import {tlds} from './tld.js';
+import {tlds} from "./tld.js";
+
+const domainInput = document.getElementById("domain-input");
+const submitButton = document.getElementById("submit");
+const resultList = document.getElementById("domain-result");
+const resultCount = document.getElementById("domain-count");
 
 const cleanDomainInput = (input) => {
     return input.match(/[a-zA-Z0-9]+/g).join("").toLowerCase();
 }
 
 const findDomainNames = input => {
+    if (input == null)
+        return []
+
     input = cleanDomainInput(input)
     return tlds
+        .filter(tld => input.length > tld.length)
         .filter(tld => input.endsWith(tld))
         .map(tld => input.slice(0, -tld.length) + "." + tld)
 }
 
 const setResult = result => {
-    document.getElementById("result").classList.remove("d-none")
+    clearResult()
 
-    const list = document.getElementById("domain-result");
+    resultList.classList.remove("d-none")
     result.forEach(domain => {
         const li = document.createElement("h5");
         li.classList.add("list-group-item")
         li.innerText = domain;
-        list.appendChild(li);
+        resultList.appendChild(li);
     });
 
-    const count = document.getElementById("domain-count");
-    count.innerText = `Found ${result.length} ${result.length === 1 ? "domain" : "domains"}`;
+    resultCount.innerText = `Found ${result.length} ${result.length === 1 ? "domain" : "domains"}`
 };
 
-
-const domain = new URLSearchParams(window.location.search).get("domain");
-if (domain != null) {
-    // set input field to be the domain
-    document.getElementsByName("domain")[0].value = domain;
-    // set result
-    setResult(findDomainNames(domain))
+const clearResult = () => {
+    resultList.classList.add("d-none")
+    resultList.innerHTML = "";
+    resultCount.innerText = "";
 }
+
+const handleInputEvent = () => {
+    setResult(findDomainNames(domainInput.value))
+}
+
+submitButton.addEventListener("click", handleInputEvent)
+domainInput.addEventListener("keydown", ev => {
+    if (ev.key === "Enter") handleInputEvent()
+})
+
 
 
 
