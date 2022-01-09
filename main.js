@@ -17,6 +17,7 @@ const findDomainNames = input => {
     return tlds
         .filter(tld => input.length > tld.length)
         .filter(tld => input.endsWith(tld))
+        .filter(tld => input.slice(0, -tld.length).length > 1)
         .map(tld => input.slice(0, -tld.length) + "." + tld)
 }
 
