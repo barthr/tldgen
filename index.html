@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate valid domain names from a single word using">
+    <title>TLD Generator - Single word domain names</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="main.js" type="module"></script>
+</head>
+<body class="bg-light">
+<div class="container">
+    <main class="row justify-content-center">
+        <div class="py-5 text-center col-12 col-lg-6">
+            <h2>Tld.gen - Singleword domain names</h2>
+            <p class="lead mt-3">
+                Always wanted to have a cool domain name like
+                <a href="https://bit.ly">bit.ly</a> or <a href="https://goo.gle">goo.gle</a> but couldn't find one? This
+                is the tool
+                you need!
+            </p>
+        </div>
+    </main>
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-6 col-12">
+            <form action="" method="get">
+                <div class="mb-3">
+                    <input
+                            placeholder="Enter domain name"
+                            aria-label="Enter domain name"
+                            class="form-control form-control-lg" type="text" name="domain" id="domain"
+                            pattern="[a-zA-Z0-9]*"
+                            required
+                            minlength="2"
+                            autofocus
+                    >
+                </div>
+                <input class="w-100 btn btn-primary btn-lg" type="submit" value="Find Domains!">
+            </form>
+        </div>
+    </div>
+    <div id="result" class="row justify-content-center d-none">
+        <div class="col-lg-6 col-12">
+            <div class="lead pb-2"><h4 id="domain-count"></h4></div>
+            <div class="list-group" id="domain-result">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
