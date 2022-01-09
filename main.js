@@ -6,16 +6,9 @@ const cleanDomainInput = (input) => {
 
 const findDomainNames = input => {
     input = cleanDomainInput(input)
-    const results = []
-    for (let i = 0; i < input.length; i++) {
-        const tld = "." + input.slice(i + 1, input.length)
-
-        if (tlds.find(t => t === tld)) {
-            const possibleName = input.slice(0, i + 1) + tld
-            results.push(possibleName)
-        }
-    }
-    return results;
+    return tlds.map(v => v.replace(".", ""))
+        .filter(v => input.endsWith(v))
+        .map(tld => input.slice(0, -tld.length) + "." + tld)
 }
 
 
