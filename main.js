@@ -6,7 +6,6 @@ const cleanDomainInput = (input) => {
 
 const findDomainNames = input => {
     input = cleanDomainInput(input)
-    console.log(input)
     const results = []
     for (let i = 0; i < input.length; i++) {
         const tld = "." + input.slice(i + 1, input.length)
@@ -41,9 +40,7 @@ if (domain != null) {
     // set input field to be the domain
     document.getElementsByName("domain")[0].value = domain;
     // set result
-    const result = findDomainNames(domain)
-    console.log(result)
-    setResult(result)
+    setResult(findDomainNames(domain))
 }
 
 
