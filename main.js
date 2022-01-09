@@ -1,7 +1,7 @@
 import {tlds} from './tld.js';
 
 const cleanDomainInput = (input) => {
-    return input.match(/[a-zA-Z0-9]+/g).join("");
+    return input.match(/[a-zA-Z0-9]+/g).join("").toLowerCase();
 }
 
 const findDomainNames = input => {
