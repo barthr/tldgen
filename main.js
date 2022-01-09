@@ -6,11 +6,10 @@ const cleanDomainInput = (input) => {
 
 const findDomainNames = input => {
     input = cleanDomainInput(input)
-    return tlds.map(v => v.replace(".", ""))
-        .filter(v => input.endsWith(v))
+    return tlds
+        .filter(tld => input.endsWith(tld))
         .map(tld => input.slice(0, -tld.length) + "." + tld)
 }
-
 
 const setResult = result => {
     document.getElementById("result").classList.remove("d-none")
