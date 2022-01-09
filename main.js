@@ -79,7 +79,6 @@ if (domain != null) {
 }
 
 document.querySelectorAll("[data-url]").forEach(el => {
-    console.log(el)
     el.setAttribute("href", `?domain=${el.getAttribute("data-url")}`)
 });
 
